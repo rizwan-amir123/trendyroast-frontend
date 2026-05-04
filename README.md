@@ -14,6 +14,9 @@ A fun web app that fetches **live trending news** and generates **savage, funny 
 - **AI**: Groq (Llama-3.3-70B)
 - **News**: NewsAPI.org
 
+### Screenshots
+https://raw.githubusercontent.com/rizwan-amir123/trendyroast-frontend/main/public/main.png
+https://raw.githubusercontent.com/rizwan-amir123/trendyroast-frontend/main/public/modal.png
 
 ### How to Run Locally
 
@@ -31,6 +34,4 @@ npm install
 # Run the app
 ng serve
 
-### Screenshots
-https://raw.githubusercontent.com/rizwan-amir123/trendyroast-frontend/main/public/main.png
-https://raw.githubusercontent.com/rizwan-amir123/trendyroast-frontend/main/public/modal.png
+
