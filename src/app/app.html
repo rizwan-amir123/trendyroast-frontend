@@ -1,0 +1,96 @@
+<div class="min-vh-100 bg-dark text-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary sticky-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand fw-bold fs-3 d-flex align-items-center" href="#">
+        🔥 <span class="ms-2">TrendyRoast</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h1 class="display-4 fw-bold mb-2">What's Trending?</h1>
+      <p class="lead text-light opacity-75">Fresh trends • Savage AI roasts • Instant funny tweets</p>
+    </div>
+
+    <div class="row mb-5 justify-content-center">
+      <div class="col-12" *ngIf="!selectedTrend">
+        <h4 class="mb-4 d-flex align-items-center">
+          <span>🔥 Trending Now</span>
+          <button class="btn btn-outline-light ms-auto" (click)="loadTrends()">
+            Refresh Trends
+          </button>
+        </h4>
+      </div>
+
+      <ng-container *ngIf="!selectedTrend; else roastedView">
+        <div *ngFor="let trend of trends" class="col-lg-4 col-md-6 mb-4">
+          <div class="card modern-card h-100 border-0 shadow-sm text-light p-2">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title mb-3">{{ trend.title }}</h5>
+              
+              <div class="mt-auto pt-3 d-flex align-items-center justify-content-between">
+                <span class="small fw-light" style="color: #adb5bd;">
+                  <span class="text-danger me-1">#</span>{{ trend.source }}
+                </span>
+                <button class="btn btn-sm btn-danger px-3 py-2 rounded-pill" 
+                        (click)="generateTweet(trend)">
+                  Roast This →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #roastedView>
+        <div class="modal-backdrop-custom" (click)="goBack()">
+          <div class="col-lg-7 col-md-10" (click)="$event.stopPropagation()">
+            <div class="card modern-modal border-0 shadow-lg text-light p-4">
+              <div class="card-body position-relative">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0" 
+                        aria-label="Close" (click)="goBack()"></button>
+
+                <div class="mb-4">
+                  <span class="text-danger text-uppercase fw-bold small ls-wide" style="letter-spacing: 2px;">
+                    Trending Topic
+                  </span>
+                  <h2 class="fw-bold mt-2 mb-1">{{ selectedTrend.title }}</h2>
+                  <span class="small fw-light" style="color: #adb5bd;">
+                    <span class="text-danger me-1">#</span>{{ selectedTrend.source }}
+                  </span>
+                </div>
+                
+                <div class="border-top border-secondary opacity-25 my-4"></div>
+
+                <div *ngIf="loading" class="text-center py-5">
+                  <div class="spinner-grow text-danger" role="status" style="width: 3rem; height: 3rem;"></div>
+                  <p class="mt-4 text-danger fw-bold">AI is cooking a savage roast...</p>
+                </div>
+
+                <div *ngIf="!loading && generatedTweet" class="animate-fade-in">
+                  <h6 class="text-danger mb-3 d-flex align-items-center">
+                    <span class="me-2">😂</span> AI Generated Roast:
+                  </h6>
+                  
+                  <div class="roast-result-box p-4 rounded-4 mb-4">
+                    <p class="fs-4 mb-0 fw-normal lh-base">{{ generatedTweet }}</p>
+                  </div>
+                  
+                  <div class="d-flex flex-wrap gap-3 mt-2">
+                    <button class="btn btn-danger px-4 py-2 rounded-pill fw-bold text-white" (click)="copyToClipboard()">
+                      📋 Copy Tweet
+                    </button>
+                    <button class="btn btn-outline-light px-4 py-2 rounded-pill" (click)="goBack()">
+                      🔙 Back to Trends
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
