@@ -15,8 +15,16 @@ A fun web app that fetches **live trending news** and generates **savage, funny 
 - **News**: NewsAPI.org
 
 ### Screenshots
-https://raw.githubusercontent.com/rizwan-amir123/trendyroast-frontend/main/public/main.png
-https://raw.githubusercontent.com/rizwan-amir123/trendyroast-frontend/main/public/modal.png
+
+<div align="center">
+
+**Home Page - Trending News**
+![Home Page](https://raw.githubusercontent.com/rizwan-amir123/trendyroast-frontend/main/public/main.png)
+
+**AI Roast Modal**
+![Roast Modal](https://raw.githubusercontent.com/rizwan-amir123/trendyroast-frontend/main/public/modal.png)
+
+</div>
 
 ### How to Run Locally
 
